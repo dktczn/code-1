@@ -1,0 +1,16 @@
+RewriteEngine On
+RewriteBase /
+RewriteRule ^storage/private/ - [F,L]
+RewriteRule ^(storage|config)/.*\.(php|phtml|phar)$ - [F,L]
+RewriteRule ^(articles|docs|pages)/?$ archive.php?type=$1 [L,QSA]
+RewriteRule ^(gadgets|jersey|fashion)/?$ index.php?niche=$1 [L,QSA]
+RewriteRule ^(articles|docs|pages)/([^/]+)/?$ content.php?type=$1&slug=$2 [L,QSA]
+RewriteRule ^(gadgets|jersey|fashion)/([^/]+)/?$ content.php?type=$1&slug=$2 [L,QSA]
+RewriteRule ^product/([^/]+)/?$ product.php?slug=$1 [L,QSA]
+RewriteRule ^category/([^/]+)/?$ category.php?niche=$1 [L,QSA]
+RewriteRule ^category/([^/]+)/([^/]+)/?$ category.php?niche=$1&cat=$2 [L,QSA]
+RewriteRule ^download/?$ download.php [L,QSA]
+RewriteRule ^generate-download/?$ generate-download.php [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L,QSA]

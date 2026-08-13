@@ -1,0 +1,2 @@
+<?php
+require __DIR__.'/includes/bootstrap.php';if(!user()){redirect('/login.php');}$fid=(int)get('file',0);$st=db()->prepare('SELECT * FROM product_files WHERE id=? AND status=1');$st->execute([$fid]);$f=$st->fetch();if(!$f){http_response_code(404);exit('File not found');}if(!user_has_purchased_product((int)user()['id'],(int)$f['product_id'])){http_response_code(403);exit('You have not purchased this product.');}$token=make_download_token((int)user()['id'],(int)$f['product_id'],(int)$f['id']);redirect('/download.php?token='.rawurlencode($token));

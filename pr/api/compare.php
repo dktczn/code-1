@@ -1,0 +1,1 @@
+<?php require __DIR__.'/../includes/bootstrap.php';$raw=json_decode(file_get_contents('php://input'),true)?:[];$id=(int)($raw['product_id']??0);if(!$id)json_response(['ok'=>false],422);$ids=$_SESSION['compare']??[];if(!in_array($id,$ids,true))$ids[]=$id;$_SESSION['compare']=array_slice($ids,-4);json_response(['ok'=>true,'count'=>count($_SESSION['compare'])]);

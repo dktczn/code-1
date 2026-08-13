@@ -1,0 +1,1 @@
+<?php require __DIR__.'/../includes/bootstrap.php';$q=trim((string)get('q',''));if(strlen($q)<2)json_response(['ok'=>true,'items'=>[]]);$term='%'.$q.'%';$st=db()->prepare('SELECT id,name,slug,price FROM products WHERE status=1 AND (name LIKE ? OR sku LIKE ? OR brand LIKE ?) LIMIT 8');$st->execute([$term,$term,$term]);json_response(['ok'=>true,'items'=>$st->fetchAll()]);

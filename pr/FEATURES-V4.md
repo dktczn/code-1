@@ -1,0 +1,13 @@
+# PAROKO V4
+- Single Best Selling title
+- 2/3-column responsive product grid
+- AJAX Load More
+- AJAX niche/category switching
+- Dark/light switcher before Cart
+- Dark mode white-panel normalization
+- Static gradients; shine animation removed
+- Image-only 16:5 banners
+- Dedicated Product and Content editor pages
+- Rich Text + HTML editor with padded controls
+- No sticky product gallery / no download tab
+- Related products and star reviews
